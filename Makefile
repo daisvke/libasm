@@ -8,10 +8,11 @@ LINK		= ld
 LIB			= ar rcs 
 
 CC			= clang $(CFLAGS)
-CFLAGS		= -Wall -Wextra -Werror
+CFLAGS		= -g3 -Wall -Wextra -Werror
 
 SRCS_DIR	= srcs/
-SRCS_FILES	= ft_strlen.s
+SRCS_FILES	=	ft_strlen.s \
+				ft_strcpy.s
 SRCS		= $(addprefix $(SRCS_DIR), $(SRCS_FILES))
 
 OBJS_DIR	= objs/
@@ -19,6 +20,7 @@ OBJS_FILES	= $(SRCS_FILES:.s=.o)
 OBJS		= $(addprefix $(OBJS_DIR), $(OBJS_FILES))
 
 MAIN_OBJ	= objs/main.o
+HEADER		= libasm.h
 
 .PHONY: all astest ctest clean fclean re
 
@@ -40,7 +42,7 @@ $(MAIN_OBJ): main.s
 	mkdir -p objs/
 	$(ASM) $< -o $@
 
-ctest: main.c libasm.h $(NAME)
+ctest: main.c $(HEADER) $(NAME)
 	$(CC) main.c $(NAME) -o $(TEST_NAME)
 	@echo "\033[32mGenerated executable test file using C main!\033[0m"
 

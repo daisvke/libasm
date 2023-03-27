@@ -4,7 +4,7 @@ TEST_NAME	= test
 ASM			= nasm $(ASFLAGS)
 ASFLAGS		= -f elf64
 
-LINK		= ld
+LD			= ld
 LIB			= ar rcs 
 
 CC			= clang $(CFLAGS)
@@ -12,7 +12,8 @@ CFLAGS		= -g3 -Wall -Wextra -Werror
 
 SRCS_DIR	= srcs/
 SRCS_FILES	=	ft_strlen.s \
-				ft_strcpy.s
+				ft_strcpy.s \
+				ft_strcmp.s
 SRCS		= $(addprefix $(SRCS_DIR), $(SRCS_FILES))
 
 OBJS_DIR	= objs/

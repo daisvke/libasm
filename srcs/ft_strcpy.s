@@ -1,12 +1,13 @@
 bits 64
 
-; strcpy - copy a string
+; An implementation of strcpy - copy a string
+; int strcmp(const char *s1, const char *s2)
 
 global ft_strcpy:
 
 ft_strcpy:
-	mov		rax, rsi		;
-	jmp		_cpyLoopi		; Jump to loop subroutine
+	mov		rax, rdi		; Copying the pointer from rdi (dest) to rax
+	jmp		_cpyLoop		; Jump to loop subroutine
 	
 _cpyLoop:
 	cmp		byte [rsi], 0	; Compare 0 to the first byte in rsi (contains 2nd arg)

@@ -1,6 +1,7 @@
 bits 64
 
-; strlen - calculate the length of a string
+; An implementation of strlen - calculate the length of a string
+; int strcmp(const char *s1, const char *s2)
 
 global ft_strlen
 

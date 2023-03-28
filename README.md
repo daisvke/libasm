@@ -2,8 +2,8 @@
 
 ## Description
 
-This project is about creating a library called libasm.a.<br />
-It contains implementations of the following functions in nasm with Intel syntax:
+This project is about creating an asm library called libasm.a.<br />
+It contains implementations of the following functions in asm with Intel syntax:
 <br /><br />
 ◦ ft_strlen (man 3 strlen)<br />
 ◦ ft_strcpy (man 3 strcpy)<br />

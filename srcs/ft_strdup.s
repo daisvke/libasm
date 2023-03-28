@@ -11,18 +11,20 @@ extern ft_strcpy
 global ft_strdup
 
 ft_strdup:
-	call	ft_strlen
-	add		rax, 1
-	push	rdi
-	mov		rdi, rax
-	call	malloc wrt ..plt
-	test	rax, rax
-	jz		fail_exit
-	pop		rbx
-	mov		rdi, rax
-	mov		rsi, rbx
-	call	ft_strcpy
-	ret
+	push	rdi					; Save rdi (src str) by pushing it to the stack
+
+	call	ft_strlen			; Get size of src string, res goes to rax
+	add		rax, 1				; Add 1 to the size for the final \0
+	mov		rdi, rax			; Assign src string size to rdi
+	call	malloc wrt ..plt	; Call malloc with rdi = size as 1st arg
+	test	rax, rax			; Result is 0 only if rax = 0 (rax AND rax)
+	jz		fail_exit			; If res = 0, allocation failed => return
+
+	pop		rbx					; Load pushed rdi (src string) into rbx
+	mov		rdi, rax			; Load pointer to allocated memory into rdi
+	mov		rsi, rbx			; Load rbx (src string) into rsi
+	call	ft_strcpy			; Call strcpy with rdi & rsi as arguments
+	ret							; return rax = copyied allocated string
 
 fail_exit:
 	ret

@@ -81,7 +81,6 @@ int	main(void)
 
 	char	s9[3];
 
-	ft_printFctName("read");
 	write(1, "ft\t: ", 5);
 	res = ft_read(1, s9, 11);
 	printf("%s9 (%ld chars)\n", s9, res);
@@ -92,14 +91,13 @@ int	main(void)
 
 	char	s10[10];
 
-	ft_printFctName("read");
 	write(1, "ft\t: ", 5);
 	res = ft_read(-1, s1, 11);
 	printf("%s10 (%ld chars)\n", s10, res);
 
 	write(1, "std\t: ", 5);
 	res = read(-1, s1, 11);
-	printf("%s10 (%ld chars)\n", s10, res);
+	printf("%s10 (%ld chars)\n\n", s10, res);
 
 	/*********************************************/
 

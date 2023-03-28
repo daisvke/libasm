@@ -44,27 +44,25 @@ int	main(void)
 	ssize_t	res = ft_write(1, s1, 11);
 	printf(" (%ld chars)\n", res);
 
-	write(1, "ft\t: ", 5);
+	write(1, "std\t: ", 5);
 	res = write(1, s1, 11);
 	printf(" (%ld chars)\n", res);
 
 	char	*s7 = NULL;
 
-	ft_printFctName("write");
 	write(1, "ft\t: ", 5);
 	res = ft_write(1, s7, 11);
 	printf(" (%ld chars)\n", res);
 
-	write(1, "ft\t: ", 5);
+	write(1, "std\t: ", 5);
 	res = write(1, s7, 11);
 	printf(" (%ld chars)\n", res);
 
-	ft_printFctName("write");
 	write(1, "ft\t: ", 5);
 	res = ft_write(-1, s1, 11);
 	printf(" (%ld chars)\n", res);
 
-	write(1, "ft\t: ", 5);
+	write(1, "std\t: ", 5);
 	res = write(-1, s1, 11);
 	printf(" (%ld chars)\n\n", res);
 	
@@ -77,7 +75,7 @@ int	main(void)
 	res = ft_read(1, s8, 11);
 	printf("%s8 (%ld chars)\n", s8, res);
 
-	write(1, "ft\t: ", 5);
+	write(1, "std\t: ", 5);
 	res = read(1, s8, 11);
 	printf("%s8 (%ld chars)\n", s8, res);
 
@@ -88,7 +86,7 @@ int	main(void)
 	res = ft_read(1, s9, 11);
 	printf("%s9 (%ld chars)\n", s9, res);
 
-	write(1, "ft\t: ", 5);
+	write(1, "std\t: ", 5);
 	res = read(1, s9, 11);
 	printf("%s9 (%ld chars)\n", s9, res);
 
@@ -99,9 +97,19 @@ int	main(void)
 	res = ft_read(-1, s1, 11);
 	printf("%s10 (%ld chars)\n", s10, res);
 
-	write(1, "ft\t: ", 5);
+	write(1, "std\t: ", 5);
 	res = read(-1, s1, 11);
 	printf("%s10 (%ld chars)\n", s10, res);
+
+	/*********************************************/
+
+	ft_printFctName("strdup");
+	char	*s11 = ft_strdup(s1);
+	printf("ft\t: %s (s1)\n", s11);
+	free(s11);
+	s11 = strdup(s1);
+	printf("std\t: %s (s1)\n", s11);
+	free(s11);
 
 	return 0;
 }

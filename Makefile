@@ -15,7 +15,8 @@ SRCS_FILES	=	ft_strlen.s	\
 				ft_strcpy.s	\
 				ft_strcmp.s	\
 				ft_write.s	\
-				ft_read.s
+				ft_read.s	\
+				ft_strdup.s
 SRCS		= $(addprefix $(SRCS_DIR), $(SRCS_FILES))
 
 OBJS_DIR	= objs/

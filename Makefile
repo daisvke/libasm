@@ -13,7 +13,8 @@ CFLAGS		= -g3 -Wall -Wextra -Werror
 SRCS_DIR	= srcs/
 SRCS_FILES	=	ft_strlen.s \
 				ft_strcpy.s \
-				ft_strcmp.s
+				ft_strcmp.s \
+				ft_write.s
 SRCS		= $(addprefix $(SRCS_DIR), $(SRCS_FILES))
 
 OBJS_DIR	= objs/

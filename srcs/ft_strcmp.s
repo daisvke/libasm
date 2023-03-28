@@ -1,7 +1,9 @@
 bits 64
 
 ; An implementation of strcmp - compare two strings
-; int ft_strcmp(const char *s1, const char *s2)
+; int ft_strcmp(
+;	const char *s1 <rdi>, const char *s2 <rsi>
+; )
 
 global ft_strcmp
 

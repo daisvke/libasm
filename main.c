@@ -33,5 +33,34 @@ int	main(void)
 	printf("ft\t: %s (s1), %s (s6), %d (ret)\n", s1, s6, ft_strcmp(s1, s6));
 	printf("std\t: %s (s1), %s (s6), %d (ret)\n\n", s1, s6, strcmp(s1, s6));
 
+	ft_printFctName("write");
+	write(1, "ft\t: ", 5);
+	ssize_t	res = ft_write(1, s1, 11);
+	printf(" (%ld chars)\n", res);
+
+	write(1, "ft\t: ", 5);
+	res = write(1, s1, 11);
+	printf(" (%ld chars)\n", res);
+
+	char	*s7 = NULL;
+
+	ft_printFctName("write");
+	write(1, "ft\t: ", 5);
+	res = ft_write(1, s7, 11);
+	printf(" (%ld chars)\n", res);
+
+	write(1, "ft\t: ", 5);
+	res = write(1, s7, 11);
+	printf(" (%ld chars)\n", res);
+
+	ft_printFctName("write");
+	write(1, "ft\t: ", 5);
+	res = ft_write(-1, s1, 11);
+	printf(" (%ld chars)\n", res);
+
+	write(1, "ft\t: ", 5);
+	res = write(-1, s1, 11);
+	printf(" (%ld chars)\n", res);
+
 	return 0;
 }

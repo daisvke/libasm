@@ -1,7 +1,9 @@
 bits 64
 
 ; An implementation of strcpy - copy a string
-; int strcmp(const char *s1, const char *s2)
+; int strcmp(
+;	const char *s1 <rdi>, const char *s2 <rsi>
+; )
 
 global ft_strcpy:
 

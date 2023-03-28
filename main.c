@@ -17,10 +17,14 @@ int	main(void)
 //	printf("ft: %ld\n", ft_strlen(s2));
 //	printf("std: %ld\n", strlen(s2));
 
+	/*********************************************/
+
 	ft_printFctName("strcpy");
 	char	s3[11];
 	printf("ft\t: %s (source), %s (dest) == %s\n", s1, ft_strcpy(s3, s1), s3);
 	printf("std\t: %s (source), %s (dest) == %s\n\n", s1, strcpy(s3, s1), s3);
+
+	/*********************************************/
 
 	ft_printFctName("strcmp");
 	char	*s4 = "0123456789";
@@ -32,6 +36,8 @@ int	main(void)
 	printf("std\t: %s (s1), %s (s5), %d (ret)\n\n", s1, s5, strcmp(s1, s5));
 	printf("ft\t: %s (s1), %s (s6), %d (ret)\n", s1, s6, ft_strcmp(s1, s6));
 	printf("std\t: %s (s1), %s (s6), %d (ret)\n\n", s1, s6, strcmp(s1, s6));
+
+	/*********************************************/
 
 	ft_printFctName("write");
 	write(1, "ft\t: ", 5);
@@ -60,7 +66,42 @@ int	main(void)
 
 	write(1, "ft\t: ", 5);
 	res = write(-1, s1, 11);
-	printf(" (%ld chars)\n", res);
+	printf(" (%ld chars)\n\n", res);
+	
+	/*********************************************/
+
+	char	s8[11];
+	
+	ft_printFctName("read");
+	write(1, "ft\t: ", 5);
+	res = ft_read(1, s8, 11);
+	printf("%s8 (%ld chars)\n", s8, res);
+
+	write(1, "ft\t: ", 5);
+	res = read(1, s8, 11);
+	printf("%s8 (%ld chars)\n", s8, res);
+
+	char	s9[3];
+
+	ft_printFctName("read");
+	write(1, "ft\t: ", 5);
+	res = ft_read(1, s9, 11);
+	printf("%s9 (%ld chars)\n", s9, res);
+
+	write(1, "ft\t: ", 5);
+	res = read(1, s9, 11);
+	printf("%s9 (%ld chars)\n", s9, res);
+
+	char	s10[10];
+
+	ft_printFctName("read");
+	write(1, "ft\t: ", 5);
+	res = ft_read(-1, s1, 11);
+	printf("%s10 (%ld chars)\n", s10, res);
+
+	write(1, "ft\t: ", 5);
+	res = read(-1, s1, 11);
+	printf("%s10 (%ld chars)\n", s10, res);
 
 	return 0;
 }

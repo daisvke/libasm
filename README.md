@@ -11,19 +11,23 @@ It contains implementations of the following functions in asm with Intel syntax:
 ◦ ft_write (man 2 write)<br />
 ◦ ft_read (man 2 read)<br />
 ◦ ft_strdup (man 3 strdup)
+<br /><br />
+It also includes a main.c which contains a tester.<br />
 
 ## Notes on register preservation
+
 Another part of a calling convention is which registers are guaranteed to retain their values after a subroutine call. 
 
 ### Caller-saved volatile registers
+
 * According to the Intel ABI to which the vast majority of compilers conform:<br >
 <b>RAX, RCX, RDX, R8, R9, R10, R11 are considered volatile (caller-saved).</b>
 * These registers are to be free for use within a procedure or function, and need not be preserved
 * As the name implies, these general-purpose registers usually hold temporary (volatile) information, that can be overwritten by any subroutine.
-
-Therefore, it is the caller's responsibility to push each of these registers onto the stack, if it would like to restore their values after a subroutine call.
+* Therefore, it is the caller's responsibility to push each of these registers onto the stack, if it would like to restore their values after a subroutine call.
 
 ### Callee-saved non-volatile registers
+
 * The other registers are used to hold long-lived values (non-volatile), that should be preserved across calls:<br />
 <b>RBX, RBP, RDI, RSI, RSP, R12, R13, R14, and R15 are considered nonvolatile (callee-saved).</b>
 * When the caller makes a procedure call, it can expect that those registers will hold the same value after the callee returns.

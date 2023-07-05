@@ -7,22 +7,25 @@ SYS_EXIT	equ 60
 extern ft_strlen
 
 section .data
-	txt1	db "abc", 10, 0
+	txt1	db		"abc", 0xa, 0
 
 section .bss
-	len		resb 1
+	len		resb	1
 
 section .text
 	global	_start
 
 %macro exit 0
-	mov	rax, SYS_EXIT
-	mov	rdi, 0
+	leave
+	mov		rax, SYS_EXIT
+	mov		rdi, 0
 	syscall
-	ret
 %endmacro
 
 _start:
+	push	rbp
+	mov		rbp, rsp
+
 	mov		rdi, txt1
 	call	ft_strlen
 	call	_printDigit

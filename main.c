@@ -8,11 +8,15 @@ void	_print_ftc_name(const char *s)
 int	main(void)
 {
 	char	*s1 = "0123456789";
+	char	*s12 = "0123456789\n";
 
 	_print_ftc_name("strlen");
 	printf("ft: %ld\n", ft_strlen(s1));
 	printf("std: %ld\n\n", strlen(s1));
-	
+	// Now with a newline character at the end
+	printf("ft: %ld\n", ft_strlen(s12));
+	printf("std: %ld\n\n", strlen(s12));
+
 //	char	*s2 = NULL;
 //	Both segfault when s2 = NULL
 //	printf("ft: %ld\n", ft_strlen(s2));

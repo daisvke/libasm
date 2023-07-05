@@ -1,3 +1,9 @@
+# Temps files
 .*.swp
+
+# obj directory
 /objs
+
+# Output files
+a.out
 test

@@ -23,15 +23,12 @@ ft_strdup:
 	mov		rdi, rax			; Assign size arg for malloc to rdi
 	call	malloc wrt ..plt	; Call malloc with rdi = size as 1st arg
 	test	rax, rax			; Result is 0 only if rax = 0 (rax AND rax)
-	jz		fail_ret			; If res = 0, allocation failed => return
+	jz		return				; If res = 0, allocation failed => return
 
 	pop		rsi					; Load pushed rdi (src string) into rbx
 	mov		rdi, rax			; Load address of allocated memory into rdi
-	call	ft_strcpy			; Call strcpy with rdi & rsi as arguments
+	call	ft_strcpy			; Call strcpy with rdi & rsi as arguments					
 
+return:
 	leave						; Pop back saved registers
-	ret							; Return rax = copyied allocated string
-
-fail_ret:
-	leave
-	ret							; Return value is rax = 0
+	ret							; Return rax = copyied allocated string (or if err0

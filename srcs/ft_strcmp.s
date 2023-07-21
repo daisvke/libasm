@@ -8,12 +8,11 @@ bits 64
 global ft_strcmp
 
 ft_strcmp:
-	; Prologue: first, save caller's stack pointers since we are
-	; modifying non-volatile registers (rbx, rdi, rsi)
+	; Prologue: first, save caller's stack pointers
 	push	rbp
 	mov		rbp, rsp
-
-	call cmp_loop
+	push	rdi
+	push	rsi
 
 cmp_loop:
 	movzx	rax, byte [rdi] ; Load 1st byte from rdi, zero extend into rax
@@ -29,9 +28,12 @@ cmp_loop:
 
 	inc		rdi				; Incriment rdi 
 	inc		rsi				; Incriment rsi
-	jmp		ft_strcmp		; Call the same routine
+	jmp		cmp_loop		; Call the same routine
 
 return:
-	; Bring back the saved registers' values (mov rsp, rbp ; pop rbp)
+	; Restore registers
+	pop		rsi
+	pop		rdi
+	; Restore the saved stack pointers' values (mov rsp, rbp ; pop rbp)
 	leave
 	ret						; Return rax

@@ -8,6 +8,10 @@ bits 64
 global ft_strcpy:
 
 ft_strcpy:
+	; Prologue: first, save caller's stack pointers
+	push	rbp
+	mov		rbp, rsp
+
 	mov		rax, rdi		; Copy the address of rdi (dest) to rax (return value)
 	jmp		cpy_loop		; Jump to loop subroutine
 	
@@ -19,4 +23,5 @@ cpy_loop:
 
 return:
 	mov		byte [rdi], 0	; Put '\0' at the end of the string
+	leave
 	ret						; Return rax

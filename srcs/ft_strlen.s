@@ -8,6 +8,10 @@ bits 64
 global ft_strlen
 
 ft_strlen:
+	; Prologue: save caller's stack pointers
+	push	rbp
+	mov		rbp, rsp
+
 	xor		rax, rax				; Init rax to 0 by XORing bits
 	jmp		count_loop				; Jump to loop subroutine
 
@@ -18,4 +22,5 @@ count_loop:
 	jmp		count_loop				; Continue loop
 
 return:
+	leave							; Restore saved stack pointers
 	ret								; Return rax which contains the string lenght

@@ -16,16 +16,12 @@ section .text
 	global	_start
 
 %macro exit 0
-	leave
 	mov		rax, SYS_EXIT
 	mov		rdi, 0
 	syscall
 %endmacro
 
 _start:
-	push	rbp
-	mov		rbp, rsp
-
 	mov		rdi, txt1
 	call	ft_strlen
 	call	_printDigit

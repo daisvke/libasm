@@ -18,15 +18,16 @@ section .text
 %macro exit 0
 	mov		rax, SYS_EXIT
 	mov		rdi, 0
+	leave
 	syscall
 %endmacro
 
 _start:
+	push	rbp
+	mov		rbp, rsp
 	mov		rdi, txt1
 	call	ft_strlen
 	call	_printDigit
-
-	exit
 
 _printDigit:
 	add		rax, 48
@@ -36,6 +37,7 @@ _printDigit:
 	mov		rdi, STDOUT
 	mov		rsi, len
 	mov		rdx, 1
-
 	syscall
-	ret
+
+	exit
+

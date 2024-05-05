@@ -32,3 +32,9 @@ Another part of a calling convention is which registers are guaranteed to retain
 <b>RBX, RBP, RDI, RSI, RSP, R12, R13, R14, and R15 are considered nonvolatile (callee-saved).</b>
 * When the caller makes a procedure call, it can expect that those registers will hold the same value after the callee returns.
 * Thus, making it the callee's responsibility to both save (push at the beginning) and restore (pop accordingly) them before returning to the caller. As in the previous case, this practice should only be done on registers that the callee changes. 
+
+## Useful commands
+```
+// Display a table listing the contents of archive
+ar t libasm.a
+```

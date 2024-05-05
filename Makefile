@@ -11,13 +11,7 @@ CC			= clang $(CFLAGS)
 CFLAGS		= -g3 -Wall -Wextra -Werror
 
 SRCS_DIR	= srcs/
-SRCS_FILES	=	ft_strlen.s	\
-				ft_strcpy.s	\
-				ft_strcmp.s	\
-				ft_write.s	\
-				ft_read.s	\
-				ft_strdup.s
-SRCS		= $(addprefix $(SRCS_DIR), $(SRCS_FILES))
+SRCS_FILES	= $(notdir $(wildcard $(SRCS_DIR)*.s))
 
 OBJS_DIR	= objs/
 OBJS_FILES	= $(SRCS_FILES:.s=.o)

@@ -23,4 +23,4 @@ count_loop:
 
 return:
 	leave							; Restore saved stack pointers
-	ret								; Return rax which contains the string lenght
+	ret								; Return rax which contains the string length

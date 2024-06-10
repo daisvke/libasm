@@ -8,6 +8,7 @@ bits 64
 SYS_READ	equ 0			; The syscall code for read
 
 global ft_read
+extern __errno_location
 
 ft_read:
 	; Prologue: save caller's stack pointers
@@ -17,13 +18,20 @@ ft_read:
 	mov		rax, SYS_READ	; Set rax with read syscall
 	syscall					; Call read
 	cmp		rax, 0			; Compare read's return value to 0
-	jl		fail_ret		; If < 0, there's an error => return
+	jl		fail_return		; If < 0, there's an error => return
 
 	leave					; Restore saved stack pointers
 	ret						; If no error, return rax that keeps
 							; the nbr of chars read by read
 
-fail_ret:
-	mov		rax, -1			; If an error occured, return -1
-	leave					; Restore saved stack pointers
-	ret						; Return rax = -1
+fail_return:
+	neg		rax					; Convert negative error value from rax into a positive value.
+								; This is necessary because the __errno_location function
+								; Expects a positive error number to correctly set the errno variable.
+
+	mov		r8, rax				; Save positive errno value into r8
+	call	__errno_location	; This call stores into rax the address where errno is stored
+    mov		[rax], r8			; Move the value of r8 to the memory location pointed to by rax
+    mov		rax, -1				; Set the return value
+	leave						; Restore saved stack pointers
+    ret

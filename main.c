@@ -71,6 +71,14 @@ int	main(void)
 	write(1, "std\t: ", 5);
 	res = write(-1, s1, 11);
 	printf(" (%ld chars), error number: %d\n\n", res, errno);
+
+	write(1, "ft\t: ", 5);
+	res = ft_write(1, NULL, 11);
+	printf(" (%ld chars), error number: %d\n", res, errno);
+
+	write(1, "std\t: ", 5);
+	res = write(1, NULL, 11);
+	printf(" (%ld chars), error number: %d\n\n", res, errno);
 	
 	/******************************************** read */
 
@@ -103,6 +111,14 @@ int	main(void)
 
 	write(1, "std\t: ", 5);
 	res = read(-1, s1, 11);
+	printf("%s10 (%ld chars), error number: %d\n\n", s10, res, errno);
+
+	write(1, "ft\t: ", 5);
+	res = ft_read(1, NULL, 11);
+	printf("%s10 (%ld chars), error number: %d\n\n", s10, res, errno);
+
+	write(1, "std\t: ", 5);
+	res = read(1, NULL, 11);
 	printf("%s10 (%ld chars), error number: %d\n\n", s10, res, errno);
 
 	/******************************************** strdup */

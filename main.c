@@ -108,20 +108,22 @@ int	main(void)
 	printf(" (%ld chars)\n", res);
 
 	write(1, "ft\t: ", 5);
+	errno = 0;
 	res = ft_write(1, s7, 11);
-	printf(" (%ld chars)\n", res);
+	printf(" (%ld chars), errno: %d\n", res, errno);
 
 	write(1, "std\t: ", 6);
-	res = write(1, s7, 11);
-	printf(" (%ld chars)\n", res);
-
 	errno = 0;
+	res = write(1, s7, 11);
+	printf(" (%ld chars), errno: %d\n", res, errno);
+
 	write(1, "ft\t: ", 5);
+	errno = 0;
 	res = ft_write(-1, s1, 11);
 	printf(" (%ld chars), error number: %d\n", res, errno);
 
-	errno = 0;
 	write(1, "std\t: ", 6);
+	errno = 0;
 	res = write(-1, s1, 11);
 	printf(" (%ld chars), error number: %d\n\n", res, errno);
 
@@ -165,6 +167,17 @@ int	main(void)
 	write(1, "std\t: ", 6);
 	res = read(1, s9, 11);
 	printf("%s9 (%ld chars)\n\n\n", s9, res);
+
+	// With NULL string
+	write(1, "ft\t: ", 5);
+	errno = 0;
+	res = ft_read(1, s7, 11);
+	printf("%s9 (%ld chars), errno: %d\n\n", s9, res, errno);
+
+	write(1, "std\t: ", 6);
+	errno = 0;
+	res = read(1, s7, 11);
+	printf("%s9 (%ld chars), errno: %d\n\n\n", s9, res, errno);
 
 	char	s10[10];
 

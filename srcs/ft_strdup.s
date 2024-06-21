@@ -25,7 +25,7 @@ ft_strdup:
 	mov		rdi, rax			; Assign size arg for malloc to rdi
 	call	malloc wrt ..plt	; Call malloc with rdi = size as 1st arg
 	test	rax, rax			; Result is 0 only if rax = 0 (rax AND rax)
-	jz		fail_return				; If res = 0, allocation failed => return
+	jz		fail_return			; If zero flag is signed = allocation failed => return
 
 	pop		rsi					; Load pushed rdi (src string) into rbx
 	mov		rdi, rax			; Load address of allocated memory into rdi

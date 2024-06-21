@@ -182,7 +182,7 @@ int	main(void)
 	printf("%s10 (%ld chars), error number: %d\n\n", s10, res, errno);
 
 	// With open file
-	int fd = open("text.txt", O_WRONLY | O_CREAT | O_TRUNC);
+	fd = open("text.txt", O_WRONLY | O_CREAT | O_TRUNC);
 	if (!fd) {
 		printf("Error opening the file.\n");
 		return 1;

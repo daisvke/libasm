@@ -11,6 +11,7 @@ ft_strcmp:
 	; Prologue: first, save caller's stack pointers
 	push	rbp
 	mov		rbp, rsp
+	; Callee-saved non-volatile registers
 	push	rdi
 	push	rsi
 
@@ -31,7 +32,7 @@ cmp_loop:
 	jmp		cmp_loop		; Call the same routine
 
 return:
-	; Restore registers
+	; Epilogue: first, restore the non-volatile registers
 	pop		rsi
 	pop		rdi
 	; Restore the saved stack pointers' values (mov rsp, rbp ; pop rbp)

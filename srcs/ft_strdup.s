@@ -8,6 +8,7 @@ bits 64
 extern malloc
 extern ft_strlen
 extern ft_strcpy
+extern __errno_location
 
 global ft_strdup
 
@@ -15,9 +16,8 @@ ft_strdup:
 	; Prologue: save caller's stack pointers
 	push	rbp
 	mov		rbp, rsp
-	; Save rdi(src str) by pushing it to the stack
+	; Callee-saved non-volatile register
 	push	rdi
-	
 	push	rdi					; Save rdi again for later use
 
 	call	ft_strlen			; Get size of src string, res goes to rax
@@ -31,11 +31,16 @@ ft_strdup:
 	mov		rdi, rax			; Load address of allocated memory into rdi
 	call	ft_strcpy			; Call strcpy with rdi & rsi as arguments
 
-	pop		rdi
-	leave						; Restore saved stack pointers
-	ret
-
-fail_return:
+return:
 	pop		rdi					; Restore rdi
 	leave						; Restore saved stack pointers
-	ret							; Return rax = copyied allocated string (or if err0
+	ret							; Return rax = copyied allocated string (or if err
+
+fail_return:
+	neg		rax					; Convert negative error value from rax into a positive value.
+								; This is necessary because the __errno_location function
+								; Expects a positive error number to correctly set the errno variable.
+	mov		r8, rax				; Save positive errno value into r8
+	call	__errno_location	; This call stores into rax the address where errno is stored
+    mov		[rax], r8			; Move the value of r8 to the memory location pointed to by rax
+	call	return

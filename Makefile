@@ -1,13 +1,14 @@
 NAME		= libasm.a
 TEST_NAME	= test
+TEMP		= text.txt
 
-ASM			= nasm $(ASFLAGS)
+ASM		= nasm $(ASFLAGS)
 ASFLAGS		= -f elf64
 
-LD			= ld
-LIB			= ar rcs 
+LD		= ld
+LIB		= ar rcs 
 
-CC			= clang $(CFLAGS)
+CC		= clang $(CFLAGS)
 CFLAGS		= -g3 -Wall -Wextra -Werror
 
 SRCS_DIR	= srcs/
@@ -45,7 +46,7 @@ ctest: main.c $(HEADER) $(NAME)
 	@echo "\033[32mGenerated executable test file using C main!\033[0m"
 
 clean:
-	rm -rf $(OBJS_DIR)
+	rm -rf $(OBJS_DIR) $(TEMP)
 
 fclean: clean
 	rm -f $(NAME) $(TEST_NAME)

@@ -37,22 +37,25 @@ int	main(void)
 	if (!s0) return 1;
 
 	_print_ftc_name("strlen");
-	printf("ft: %ld\n", ft_strlen(s1));
-	printf("std: %ld\n\n", strlen(s1));
+	printf("ft:\t%ld\n", ft_strlen(s1));
+	printf("std:\t%ld\n\n", strlen(s1));
+
 	// Now with a newline character at the end
-	printf("ft: %ld\n", ft_strlen(s12));
-	printf("std: %ld\n\n", strlen(s12));
+	printf("ft:\t%ld\n", ft_strlen(s12));
+	printf("std:\t%ld\n\n", strlen(s12));
+
 	// // With NULL source string (both segfault)
 	// char	*s2 = NULL;
 	// errno = 0;
-	// printf("ft: %ld, errno: %d\n", ft_strlen(s2), errno);
+	// printf("ft:\t%ld, errno: %d\n", ft_strlen(s2), errno);
 	// errno = 0;
-	// printf("std: %ld, errno: %d\n", strlen(s2), errno);
+	// printf("std:\t%ld, errno: %d\n", strlen(s2), errno);
+	//
 	// With long source string (1000000000: OK)
 	errno = 0;
-	printf("ft: %ld, errno: %d\n", ft_strlen(s0), errno);
+	printf("ft:\t%ld, errno: %d\n", ft_strlen(s0), errno);
 	errno = 0;
-	printf("std: %ld, errno: %d\n", strlen(s0), errno);
+	printf("std:\t%ld, errno: %d\n", strlen(s0), errno);
 
 	/******************************************** strcpy */
 
@@ -100,7 +103,7 @@ int	main(void)
 	ssize_t	res = ft_write(1, s1, 11);
 	printf(" (%ld chars)\n", res);
 
-	write(1, "std\t: ", 5);
+	write(1, "std\t: ", 6);
 	res = write(1, s1, 11);
 	printf(" (%ld chars)\n", res);
 
@@ -108,7 +111,7 @@ int	main(void)
 	res = ft_write(1, s7, 11);
 	printf(" (%ld chars)\n", res);
 
-	write(1, "std\t: ", 5);
+	write(1, "std\t: ", 6);
 	res = write(1, s7, 11);
 	printf(" (%ld chars)\n", res);
 
@@ -118,7 +121,7 @@ int	main(void)
 	printf(" (%ld chars), error number: %d\n", res, errno);
 
 	errno = 0;
-	write(1, "std\t: ", 5);
+	write(1, "std\t: ", 6);
 	res = write(-1, s1, 11);
 	printf(" (%ld chars), error number: %d\n\n", res, errno);
 
@@ -135,7 +138,7 @@ int	main(void)
 	printf(" (%ld chars), error number: %d\n", res, errno);
 
 	errno = 0;
-	write(1, "std\t: ", 5);
+	write(1, "std\t: ", 6);
 	res = write(fd, s1, 11);
 	printf(" (%ld chars), error number: %d\n\n", res, errno);
 
@@ -149,7 +152,7 @@ int	main(void)
 	res = ft_read(1, s8, 11);
 	printf("%s8 (%ld chars)\n\n", s8, res);
 
-	write(1, "std\t: ", 5);
+	write(1, "std\t: ", 6);
 	res = read(1, s8, 11);
 	printf("%s8 (%ld chars)\n\n\n", s8, res);
 
@@ -159,7 +162,7 @@ int	main(void)
 	res = ft_read(1, s9, 11);
 	printf("%s9 (%ld chars)\n\n", s9, res);
 
-	write(1, "std\t: ", 5);
+	write(1, "std\t: ", 6);
 	res = read(1, s9, 11);
 	printf("%s9 (%ld chars)\n\n\n", s9, res);
 
@@ -169,7 +172,7 @@ int	main(void)
 	res = ft_read(-1, s1, 11);
 	printf("%s10 (%ld chars), error number: %d\n\n", s10, res, errno);
 
-	write(1, "std\t: ", 5);
+	write(1, "std\t: ", 6);
 	res = read(-1, s1, 11);
 	printf("%s10 (%ld chars), error number: %d\n\n", s10, res, errno);
 
@@ -177,7 +180,7 @@ int	main(void)
 	res = ft_read(1, NULL, 11);
 	printf("%s10 (%ld chars), error number: %d\n\n", s10, res, errno);
 
-	write(1, "std\t: ", 5);
+	write(1, "std\t: ", 6);
 	res = read(1, NULL, 11);
 	printf("%s10 (%ld chars), error number: %d\n\n", s10, res, errno);
 

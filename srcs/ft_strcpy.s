@@ -16,7 +16,6 @@ ft_strcpy:
 	push	rsi
 
 	mov		rax, rdi		; Copy the address of rdi (dest) to rax (return value)
-	jmp		cpy_loop		; Jump to loop subroutine
 	
 cpy_loop:
 	cmp		byte [rsi], 0	; Compare 0 to the first byte in rsi (contains 2nd arg)

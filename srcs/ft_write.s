@@ -14,10 +14,6 @@ ft_write:
 	; Prologue: save caller's stack pointers
 	push	rbp
 	mov		rbp, rsp
-	; Callee-saved non-volatile registers
-	push	rdi
-	push	rsi
-	push	rdx
 
 	mov		rax, SYS_WRITE	; Set rax with write syscall
 	syscall					; write syscall => sets rax to printed char
@@ -27,9 +23,6 @@ ft_write:
 
 return:
 	; Epilogue: first, restore the non-volatile registers
-	pop		rdx
-	pop		rsi
-	pop		rdi
 	leave					; Restore saved stack pointers
 	ret						; If no error, return rax that keeps
 							; The nbr of chars printed by write
